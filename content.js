@@ -13,16 +13,16 @@ const CONTENT = {
     phone: "+977-9847978192",
     location: "Kathmandu, Nepal",
     photo: "images/muna.jpg",    
-    cv: "files/cv.pdf",    // put your photo in an "images" folder next to index.html
+    cv: "Files/cv.pdf",    // put your photo in an "images" folder next to index.html
     stats: [                         // numbers shown under the hero text
       { value: "3+", label: "Years experience" },
-      { value: "100+", label: "Projects" },
-      { value: "100+", label: "Happy clients" }
+     
+     
     ],
     social: [                        // shown in the footer
-      { label: "LinkedIn", url: "https://linkedin.com/in/yourname" },
-      { label: "Behance",  url: "https://behance.net/yourname" },
-      { label: "Dribbble", url: "https://dribbble.com/yourname" }
+      { label: "LinkedIn", url: "www.linkedin.com/in/moona-magrati-890b0b26a" },
+      { label: "Whatsapp" },
+      
     ]
   },
 
@@ -44,7 +44,7 @@ const CONTENT = {
     jobTypes: ["Full-time", "Remote", "Contract"],
     formEndpoint: "https://formspree.io/f/mnpdodqr"                 // paste your Formspree URL here to receive real emails
   },
-  footer: "Designed in Figma. Built with care in Kathmandu, Nepal.",
+  
 
   /* ---------- Skills (one card per group) ---------- */
   skills: [
