@@ -1,0 +1,168 @@
+/* ==========================================================
+   style.css – light blue UI/UX portfolio
+   Sections: 1 Colors · 2 Base · 3 Navbar · 4 Buttons · 5 Hero
+   6 3D scene · 7 Ribbon · 8 Cards & grids · 9 About · 10 Experience
+   11 Projects · 12 Contact · 13 Footer · 14 Reveal · 15 Responsive
+   ========================================================== */
+
+/* ---------- 1. Colors & settings (change the theme here) ---------- */
+:root {
+  --primary: #1E88E5;      /* buttons, links */
+  --sky: #4DA8F5;          /* gradients, hover */
+  --light: #BFE0FF;        /* soft accents */
+  --ice: #EAF4FF;          /* section background, chips */
+  --bg: #F7FBFF;           /* page background */
+  --navy: #0F2A4A;         /* headings */
+  --text: #4A5B73;         /* body text */
+  --border: #D6E6F7;
+  --card: rgba(255, 255, 255, .72);
+  --shadow: 0 20px 50px rgba(30, 136, 229, .18);
+  --radius: 24px;
+  --font-heading: Poppins, system-ui, Arial, sans-serif;
+  --font-body: Inter, system-ui, Arial, sans-serif;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1628; --ice: #0F2240; --card: rgba(19, 42, 71, .7); --navy: #EAF4FF;
+    --text: #A9BDD6; --border: #24405F; --light: #2A5A8C; --shadow: 0 20px 50px rgba(0, 0, 0, .4);
+  }
+}
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/26px var(--font-body); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--navy); margin: 0; }
+h1 { font-size: 60px; line-height: 68px; font-weight: 700; margin: 18px 0; }
+h1 em { font-style: normal; background: linear-gradient(120deg, var(--sky), var(--primary), #6C63FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+h2 { font-size: 40px; line-height: 48px; font-weight: 600; margin-bottom: 36px; }
+h2::after { content: ""; display: block; width: 64px; height: 5px; border-radius: 9px; margin-top: 12px; background: linear-gradient(90deg, var(--sky), var(--primary)); }
+h3 { font-size: 24px; line-height: 32px; margin-bottom: 10px; }
+.lead { font-size: 18px; line-height: 28px; max-width: 640px; }
+.w { max-width: 1200px; margin: auto; padding: 0 20px; position: relative; }
+section { padding: 88px 0; position: relative; }
+.alt { background: linear-gradient(180deg, var(--ice), var(--bg)); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; perspective: 1000px; }
+
+/* Floating blurred blobs behind sections */
+.blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; z-index: 0; pointer-events: none; animation: drift 14s ease-in-out infinite alternate; }
+.blob-1 { width: 420px; height: 420px; background: #7CC4FF; top: -80px; right: -60px; }
+.blob-2 { width: 320px; height: 320px; background: var(--light); bottom: -60px; left: -80px; animation-delay: -6s; }
+@keyframes drift { to { transform: translate(40px, 50px) scale(1.15); } }
+
+/* ---------- 3. Navbar ---------- */
+nav { display: flex; justify-content: space-between; align-items: center; height: 72px; padding: 0 20px; position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: var(--card); border-bottom: 1px solid var(--border); }
+nav b { font: 600 20px var(--font-heading); color: var(--navy); }
+nav b i { color: var(--primary); font-style: normal; }
+nav .nl { display: flex; align-items: center; }
+nav a { margin-left: 24px; color: var(--navy); text-decoration: none; font-weight: 500; font-size: 15px; }
+
+/* ---------- 4. Buttons ---------- */
+.btn { display: inline-block; height: 48px; line-height: 48px; padding: 0 28px; border: 0; border-radius: 14px; font: 500 16px/48px var(--font-body); text-decoration: none; cursor: pointer; background: linear-gradient(135deg, var(--sky), var(--primary)); color: #fff !important; box-shadow: 0 10px 24px rgba(30, 136, 229, .35); transition: transform .2s, box-shadow .2s; }
+.btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 32px rgba(30, 136, 229, .45); }
+.btn-outline { background: transparent; border: 1.5px solid var(--primary); color: var(--primary) !important; line-height: 45px; box-shadow: none; }
+.btn-small { height: 40px; line-height: 40px; padding: 0 20px; }
+.btn-block { width: 100%; }
+
+/* ---------- 5. Hero ---------- */
+.hero-section { overflow: hidden; }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; z-index: 1; }
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 99px; font-size: 14px; font-weight: 500; color: var(--primary); background: var(--card); border: 1px solid var(--border); }
+.badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; animation: pulse 1.6s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, .6); } 50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); } }
+.actions { margin-top: 28px; }
+.stats { display: flex; gap: 40px; margin-top: 40px; }
+.stats b { display: block; font: 700 34px var(--font-heading); color: var(--primary); }
+
+/* ---------- 6. 3D scene (cube, rings, orbs) ---------- */
+.scene { perspective: 1000px; height: 420px; display: grid; place-items: center; z-index: 1; }
+.stage { transform-style: preserve-3d; transition: transform .15s; width: 200px; height: 200px; position: relative; }
+.cube { position: absolute; inset: 0; transform-style: preserve-3d; animation: spin 18s linear infinite; }
+@keyframes spin { from { transform: rotateX(-20deg) rotateY(0); } to { transform: rotateX(-20deg) rotateY(360deg); } }
+.face { position: absolute; inset: 0; display: grid; place-items: center; font: 700 26px var(--font-heading); color: #fff; border-radius: 22px; border: 1px solid rgba(255, 255, 255, .5); background: linear-gradient(135deg, rgba(77, 168, 245, .85), rgba(30, 136, 229, .9)); box-shadow: inset 0 0 40px rgba(255, 255, 255, .3); }
+.face:nth-child(1) { transform: translateZ(100px); }
+.face:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
+.face:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
+.face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
+.face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
+.face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
+.ring { position: absolute; inset: -70px; border-radius: 50%; border: 3px solid rgba(77, 168, 245, .6); box-shadow: 0 0 30px rgba(77, 168, 245, .5); transform: rotateX(75deg); animation: ring-spin 9s linear infinite; }
+.ring-2 { inset: -110px; border-color: rgba(108, 99, 255, .45); animation-duration: 14s; animation-direction: reverse; }
+@keyframes ring-spin { to { transform: rotateX(75deg) rotateZ(360deg); } }
+.orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff, #7CC4FF 40%, var(--primary)); box-shadow: 0 20px 40px rgba(30, 136, 229, .4); transform: translateZ(60px); animation: float 5s ease-in-out infinite alternate; }
+.orb-1 { width: 70px; height: 70px; top: -90px; right: -110px; }
+.orb-2 { width: 44px; height: 44px; bottom: -70px; left: -100px; animation-delay: -2s; }
+.orb-3 { width: 28px; height: 28px; top: 40px; left: -140px; animation-delay: -3.5s; }
+@keyframes float { to { transform: translate3d(0, -26px, 60px); } }
+
+/* ---------- 7. Skills ribbon ---------- */
+.ribbon { overflow: hidden; white-space: nowrap; margin: 20px -10px; padding: 14px 0; color: #fff; transform: rotate(-1.2deg); background: linear-gradient(90deg, var(--primary), var(--sky)); box-shadow: var(--shadow); }
+.ribbon div { display: inline-block; font: 600 18px var(--font-heading); animation: scroll-left 22s linear infinite; }
+.ribbon span { margin: 0 28px; }
+@keyframes scroll-left { to { transform: translateX(-50%); } }
+
+/* ---------- 8. Cards, chips, icons ---------- */
+.card { background: var(--card); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); transform-style: preserve-3d; transition: transform .15s, box-shadow .3s; }
+.card > * { transform: translateZ(30px); }
+.card.hide { display: none; }
+.chips span { display: inline-block; margin: 0 8px 8px 0; padding: 8px 16px; border-radius: 99px; font-size: 14px; font-weight: 500; color: var(--primary); background: var(--ice); border: 1px solid var(--border); }
+.icon { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; font-size: 26px; margin-bottom: 16px; background: linear-gradient(135deg, var(--sky), var(--primary)); box-shadow: 0 10px 20px rgba(30, 136, 229, .35); }
+
+/* ---------- 9. About + photo ---------- */
+.about { display: grid; grid-template-columns: 340px 1fr; gap: 48px; align-items: center; perspective: 1000px; }
+.photo { position: relative; margin: 0; aspect-ratio: 4 / 5; display: grid; place-items: center; overflow: hidden; border-radius: 32px; border: 6px solid var(--card); color: #fff; font: 700 72px var(--font-heading); background: linear-gradient(135deg, var(--light), var(--sky) 60%, var(--primary)); box-shadow: var(--shadow); transition: transform .15s; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- 10. Experience timeline ---------- */
+.timeline { position: relative; padding-left: 36px; }
+.timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; border-radius: 9px; background: linear-gradient(var(--primary), var(--light)); }
+.job { position: relative; margin-bottom: 24px; }
+.job::before { content: ""; position: absolute; left: -36px; top: 30px; width: 19px; height: 19px; border-radius: 50%; background: var(--primary); border: 4px solid var(--bg); box-shadow: 0 0 0 4px rgba(77, 168, 245, .35); }
+.job h4 { font-size: 18px; color: var(--primary); }
+.job small { display: block; font-size: 14px; margin-bottom: 6px; }
+
+/* ---------- 11. Projects (tabs + previews) ---------- */
+.tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.tabs button { padding: 10px 18px; border-radius: 99px; cursor: pointer; font: 500 14px var(--font-body); color: var(--navy); background: var(--card); border: 1px solid var(--border); transition: transform .2s; }
+.tabs button:hover { transform: translateY(-2px); }
+.tabs button.on { color: #fff; border-color: transparent; background: linear-gradient(135deg, var(--sky), var(--primary)); box-shadow: 0 8px 18px rgba(30, 136, 229, .35); }
+.preview { min-height: 160px; border-radius: 16px; margin-bottom: 16px; display: grid; place-items: center; overflow: hidden; background: linear-gradient(135deg, var(--light), var(--sky)); }
+.preview span { font-size: 44px; }
+.preview img { display: block; width: 100%; height: auto; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+/* ---------- 12. Contact ---------- */
+.contact-section { overflow: hidden; }
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; z-index: 1; }
+.contact a { color: var(--primary); }
+input, select, textarea { width: 100%; height: 52px; margin-bottom: 12px; padding: 0 16px; font: inherit; color: var(--navy); background: var(--bg); border: 1px solid var(--border); border-radius: 14px; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--sky); }
+textarea { height: 100px; padding: 12px 16px; }
+
+/* ---------- 13. Footer ---------- */
+footer { background: #0F2A4A; color: var(--light); text-align: center; padding: 32px 20px; font-size: 14px; }
+.social { margin-bottom: 10px; }
+.social a { color: #fff; margin: 0 12px; text-decoration: none; font-weight: 500; }
+
+/* ---------- 14. Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s, transform .7s; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- 15. Mobile (screens under 800px) ---------- */
+@media (max-width: 800px) {
+  .hero, .contact, .grid, .about { grid-template-columns: 1fr; }
+  h1 { font-size: 38px; line-height: 46px; }
+  h2 { font-size: 28px; line-height: 36px; }
+  nav .nl a { display: none; }
+  nav .nl a.btn { display: inline-block; margin: 0; }
+  .stats { gap: 24px; }
+  .scene { height: 340px; transform: scale(.8); }
+  .photo { max-width: 280px; margin: auto; }
+}

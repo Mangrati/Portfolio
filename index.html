@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Muna Mangrati – UI/UX Designer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Text marked data-bind="a.b" is filled from content.js (CONTENT.a.b). Edit text there. -->
+
+  <!-- NAVBAR -->
+  <nav>
+    <b><span data-bind="profile.name"></span><i>.</i></b>
+    <div class="nl">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+      <a href="#projects">Projects</a><a href="#contact">Contact</a>
+      <a class="btn btn-small" href="#contact">Hire me</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="blob blob-1"></div><div class="blob blob-2"></div>
+    <div class="w hero">
+      <div>
+        <span class="badge" data-bind="profile.availability"></span>
+        <h1><span data-bind="hero.before"></span> <em data-bind="hero.highlight"></em> <span data-bind="hero.after"></span></h1>
+        <p class="lead" data-bind="hero.text"></p>
+        <p class="actions"><a class="btn" href="#projects">View my work</a> <a class="btn btn-outline" data-cv-download download>Download CV</a></p>
+        <div class="stats" id="stats"></div>
+      </div>
+
+      <!-- 3D cube: change the six face labels here if you like -->
+      <div class="scene"><div class="stage" id="stage">
+        <div class="ring"></div><div class="ring ring-2"></div>
+        <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+        <div class="cube">
+          <div class="face">UI</div><div class="face">UX</div><div class="face">Figma</div>
+          <div class="face">Brand</div><div class="face">Web</div><div class="face">Type</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- SCROLLING SKILLS RIBBON (built from your skills) -->
+  <div class="ribbon"><div id="ribbon"></div></div>
+
+  <!-- ABOUT + PHOTO -->
+  <section id="about">
+    <div class="w reveal">
+      <h2>About me</h2>
+      <div class="about">
+        <figure class="photo tilt">
+          <span id="photo-fallback">MM</span>
+          <img id="photo-img" alt="Photo of Muna Mangrati" hidden>
+        </figure>
+        <div>
+          <p class="lead" data-bind="about.text"></p>
+          <p class="chips" id="about-tags"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="alt"><div class="w reveal"><h2>Skills</h2><div class="grid" id="skills-grid"></div></div></section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience"><div class="w reveal"><h2>Experience</h2><div class="timeline" id="experience-list"></div></div></section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="alt">
+    <div class="w reveal">
+      <h2>Selected projects</h2>
+      <div class="tabs" id="project-tabs"></div>
+      <div class="grid" id="project-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT (for HR) -->
+  <section id="contact" class="contact-section">
+    <div class="blob blob-2"></div>
+    <div class="w contact reveal">
+      <div>
+        <h2 data-bind="contact.title"></h2>
+        <p data-bind="contact.text"></p>
+        <p class="chips" id="contact-tags"></p>
+        <p>✉ <a id="contact-email" href="#"></a><br>☎ <span data-bind="profile.phone"></span><br>📍 <span data-bind="profile.location"></span></p>
+      </div>
+      <form class="card" id="contact-form">
+        <input name="name" placeholder="Full name" required>
+        <input name="company" placeholder="Company">
+        <input name="email" type="email" placeholder="Work email" required>
+        <select name="jobType" id="job-type"></select>
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button class="btn btn-block" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer><div class="social" id="social"></div> <span data-bind="profile.name"></span> · <span data-bind="footer"></span></footer>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
